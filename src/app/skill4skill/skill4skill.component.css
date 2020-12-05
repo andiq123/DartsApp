@@ -1,0 +1,19 @@
+.scores {
+  display: flex;
+  justify-content: space-between;
+}
+
+.player-scores {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+.round-info {
+  margin-right: 200px;
+}
+
+.rules {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

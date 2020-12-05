@@ -1,0 +1,8 @@
+<form class="form-inline">
+  <div class="form-group mx-sm-3 mb-2">
+    <p><strong>{{ player.name | titlecase }}</strong></p>
+    <input type="text" name="Player{{player.id}}" class="form-control" placeholder="Score" [(ngModel)]="score">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2" (click)="addScore()" [disabled]="isLocked" >Add score</button>
+</form>
+

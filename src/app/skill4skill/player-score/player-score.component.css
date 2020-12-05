@@ -1,0 +1,12 @@
+.form-group {
+  display: flex;
+  flex-flow: column;
+}
+.form-group p {
+  text-align: start;
+  margin: 0;
+}
+
+button {
+  margin-top: 20px;
+}

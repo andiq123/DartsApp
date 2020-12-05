@@ -1,0 +1,58 @@
+<div class="container" *ngIf="!isGameStarted && winners.length == 0">
+  <div class="rules">
+    <div class="form-group">
+      <h1>Enter an amount of players</h1>
+      <input type="number" [(ngModel)]="nrOfPlayers" (change)="setPlayers()" required>
+      <button class="btn btn-primary ml-5" (click)="setPlayers()" [disabled]="!nrOfPlayers">Set</button>
+  </div>
+  <div class="form-group">
+    <h3>How many rounds?</h3>
+    <input type="number" [(ngModel)]="nrOfRounds" name="Rounds" (change)="setRounds()">
+    <button class="btn btn-primary ml-5" (click)="setRounds()">Set</button>
+  </div>
+</div>
+
+  <div *ngIf="plobj.length > 0">
+    <app-player-set *ngFor="let player of plobj" [index]="player" ></app-player-set>
+    <button class="btn btn-primary" [disabled]="plobj.length==0" (click)="startGame()">Start Game</button>
+  </div>
+</div>
+
+<hr>
+<div class="container mt-5 " *ngIf="isGameStarted && winners.length == 0">
+  <div class="scores">
+    <div class="player-scores">
+      <app-player-score  *ngFor="let player of players" [player]="player"  ></app-player-score>
+    </div>
+    <div class="round-info">
+      <h2>Current round: {{round}}</h2>
+    </div>
+  </div>
+  <table class="table mt-5">
+    <thead>
+      <tr>
+        <th *ngFor="let round of rounds">
+        {{round}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let player of players">
+      <th>{{ player.name | titlecase }}</th>
+      <th *ngFor="let score of player.score">
+        {{score}}
+      </th>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container" *ngIf="isGameStarted && winners.length>0">
+  <h1>The Winners Are: </h1>
+  <ol>
+    <li *ngFor="let winner of winners">
+      {{winner.name | titlecase}}: {{winner.score}}
+    </li>
+  </ol>
+  <button class="btn btn-primary" (click)="resetGame()">Reset</button>
+</div>
